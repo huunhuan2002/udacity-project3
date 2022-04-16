@@ -24,38 +24,38 @@ spec:
             cpu: "250m"
           limits:
             memory: "1024Mi"
-            cpu: "500m"      
+            cpu: "500m"
         env:
         - name: URL
           valueFrom:
             configMapKeyRef:
-              name: env-config
+              name: env-configmap
               key: URL 
         - name: JWT_SECRET
           valueFrom:
-            configMapKeyRef:
-              name: env-config
+            secretKeyRef:
+              name: env-secret
               key: JWT_SECRET
-        - name: POSTGRESS_DB
+        - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
-              name: env-config
-              key: POSTGRESS_DB
-        - name: POSTGRESS_HOST
+              name: env-configmap
+              key: POSTGRES_DB
+        - name: POSTGRES_HOST
           valueFrom:
             configMapKeyRef:
-              name: env-config
-              key: POSTGRESS_HOST
-        - name: POSTGRESS_PASSWORD
+              name: env-configmap
+              key: POSTGRES_HOST
+        - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
               name: env-secret
-              key: POSTGRESS_PASSWORD
-        - name: POSTGRESS_USERNAME
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_USERNAME
           valueFrom:
             secretKeyRef:
               name: env-secret
-              key: POSTGRESS_USERNAME
+              key: POSTGRES_USERNAME
       restartPolicy: Always
 
 
